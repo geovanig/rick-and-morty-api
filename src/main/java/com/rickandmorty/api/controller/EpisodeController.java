@@ -5,23 +5,22 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-import com.rickandmorty.api.client.RickAndMortyClient;
-import com.rickandmorty.api.response.CharacterResponse;
+import com.rickandmorty.api.client.EpisodeClient;
+import com.rickandmorty.api.response.EpisodeResponse;
 import lombok.AllArgsConstructor;
 import reactor.core.publisher.Mono;
-
 
 @RestController
 @AllArgsConstructor
 @RequestMapping("webclient")
-public class RickAndMortyController {
+public class EpisodeController {
 
 	@Autowired
-	RickAndMortyClient client;
+	EpisodeClient client;
 	
-	@GetMapping("/characters/{id}")
-	public Mono<CharacterResponse> getCharacterById(@PathVariable String id){
-		return client.findCharacterById(id);
+	@GetMapping("/episodes/{id}")
+	public Mono<EpisodeResponse> getEpisodeById(@PathVariable String id){
+		return client.findEpisodeById(id);
 	}
 	
 }
